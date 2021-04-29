@@ -1,50 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
+<style>
+            table {
+                border-collapse: collapse;
+                border: 2px black solid;
+                font: 12px sans-serif;
+            }
 
-  $("button").click(function(){
-    $.get("http://127.0.0.1:8000/", function(data, status){
-      //alert("Data: " + data + "\nStatus: " + status);
-	  test(data.toString());
-	  
-    });
-  });
-  
-  /*function test(data) {
-   //let myJson = Json.parse(data);
-	
-	var res = data.split("\r\n");
-	console.log(data + "\n");
-	console.log(res[0]);
-	
-	let i = 1;
-	
-	let headers = res[0].split(";");
-	res.splice(0, 1);
-	let data2 = [];
-	//alert(res[1].split(";") + " ** ");
-	//alert(res[1].split(";").length + " ** ");
-	let j = 0;
-	let k = 0;
-	
-	while (i < res.length) {
-	    let dat = res[i].split(";");
-		while (j < dat.length) {
-			data2[k] = dat[j];
-			k++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	
-	alert(data2[0+1]);	
-  }  
-  */
-});
+            td {
+                border: 1px black solid;
+                padding: 5px;
+            }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
+<script> 
 
  function test(data, name, number) {
    //let myJson = Json.parse(data);
@@ -104,7 +76,7 @@ $(document).ready(function(){
 	return foundUser;
   }
 
-function testFun() {
+function authenticate() {
 	
 	var name = document.getElementById("username").value.trim();
 	var employeenumber = document.getElementById("employeenumber").value.trim();
@@ -114,17 +86,51 @@ function testFun() {
 	} else {
 		//alert("t " + name + "  " + employeenumber);
 		$.get("http://127.0.0.1:8000/", function(data, status){
-		  //alert("Data: " + data + "\nStatus: " + status);
+		  alert("Data: " + data + "\nStatus: " + status);
+		  alert( data.search("\r\n"));
+		  //alert( data.search("\r\n"));
 		  let authenticate = test(data.toString(), name.toUpperCase(), employeenumber.toUpperCase());	
 		  
 		  if (authenticate) {
 			alert("User successfully logged in");
+			populate(data.toString());
 		  } else {
 			alert("User is not in the database");
 		  }
 		  
 		}); 
 	}	
+}
+
+function populate(data) {
+	
+	var res = data.split("\r\n");
+	console.log(data + "\n");
+	console.log(res[0]);
+	
+	let i = 0;
+	
+	let headers = res[0].split(";");
+	res.splice(0, 1);
+	let data2 = [];
+	let j = 0;
+	let k = 0;
+	
+	while (i < res.length) {
+	    let dat = res[i].split(";");
+		dat[0] = "<tr><td>" + dat[0];
+		while (j < dat.length) {
+			data2[k] = dat[j]+"</td><td>";
+			console.log(data2[k] + "  ");
+			k++;
+			j++;
+		}
+		data2[k] ="</td></tr>";
+		k++;
+		j = 0;
+		i++;
+	}
+	
 }
   
 </script>
@@ -135,7 +141,7 @@ function testFun() {
 <input type = "text" id="username" name ="username" required="true"/><br/>
 <label for="employeenumber"> Employeenumber </label><br/>
 <input type = "text" name ="employeenumber" id="employeenumber" required="true"/><br/><br/>
-<input type = "button" name ="button" onclick = "testFun()" value="login" /><br/>
+<input type = "button" name ="button" onclick = "authenticate()" value="login" /><br/>
 
 </body>
 </html>

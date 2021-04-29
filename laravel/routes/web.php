@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+
+Thank you so much for a shot at the position, this task has made me realise that I need more training for PHP and react
+
+*/
+
 Route::get('/', function () {
 	 
-	$fh = fopen("..//routes//SampleImport.csv", "r");
-	//..//routes//SampleImport.csv"
-	//Setup a PHP array to hold our CSV rows.
+	$fh = fopen("..//routes//SampleImport.csv", "r"); 
 	
 	$myfile = fopen("..//routes//SampleImport.csv", "r") or die("Unable to open file!");
 	$myData =  fread($myfile,filesize("..//routes//SampleImport.csv"));
@@ -28,9 +32,7 @@ Route::get('/', function () {
 
 Route::get('/test', function () {
 	 
-	$fh = fopen("..//routes//SampleImport.csv", "r");
-	//..//routes//SampleImport.csv"
-	//Setup a PHP array to hold our CSV rows.
+	$fh = fopen("..//routes//SampleImport.csv", "r"); 
 	 
 	return 'Test';
 });
