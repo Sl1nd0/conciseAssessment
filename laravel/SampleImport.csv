@@ -1,0 +1,20 @@
+Employee Number;First Name;Surname;Date of Birth;Position;Start Date;Department;Annual Salary;Manager Employee Number;Project Code 1;Project Code 2;Project Code 3
+A1111;Gayle;King;1989/05/20;Administrator;2010/05/20;Business Development;1200000;;;;
+A1112;Jackie;Chan;1993/04/19;Service Agent;2010/05/21;Client Services;2200000;;;;
+A1113;Chuck;Norris;1988/10/20;Senior Sofware Developer;2010/05/22;Information Technology;1200000;A1112;PJ003;PJ002;
+A1114;Elvis;Presley;1987/05/08;Receptionist;2010/05/23;Client Services;1200000;A1112;;;
+A1115;Tom;Hanks;1995/09/17;Driver;2010/05/24;Transport;150000;A1116;;;
+A1116;asdsa;Bopape;1988/12/09;Driver;2010/05/25;Transport;250000;A1112;;;
+A1117;Nicole;Meyer;1984/03/18;Marketing Assistant;2010/05/26;Marketing & Communications;500000;A1112;;;
+A1118;Mariah;Carey;1999/10/18;Brand PR;2015/05/27;Marketing & Communications;650000;A1121;;;
+A1119;Minnie;Mouse;1982/03/20;Team Leader;2015/05/28;Finance;1200000;A1112;;;
+A1120;Whitney;Houston;1991/06/02;Senior Specialist: Tax Po;2015/05/29;Finance;350000;A1112;;;
+A1121;Concise;Flow;1989/05/20;Head: Brand PR;2015/05/30;Marketing & Communications;1200000;A1129;PJ001;;
+A1122;George;Clooney;1993/04/19;Senior Finance Officer;2015/05/31;Operations;1200000;A1129;;;
+A1123;Brad;Pitt;1988/10/20;Attorney;2015/06/01;Law;950000;A1129;;;
+A1124;Barry;White;1987/05/08;Specialist: IMI;2000/06/02;Finance;3500000;A1129;;;
+A1125;Prince;Harry;1995/09/17;Fleet Administrator;2000/06/03;Procurement;700000;;;;
+A1126;Joe;Slovo;1988/12/09;Executive HR;2000/06/04;Human Resource;1300000;A1129;;;
+A1127;Oprah;Winfrey;1984/03/18;CTO;2000/06/05;Information Technology;3000000;A1129;;;
+A1128;Mickey;Mouse;1999/10/18;Web Developer;2000/06/06;Information Technology;180000;;PJ001;;
+A1129;Mary;Poppins;1982/03/20;Junior Software Developer;2000/06/07;Information Technology;200000;A1112;PJ001;PJ004;PJ002

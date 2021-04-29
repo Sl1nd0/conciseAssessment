@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+  $("button").click(function(){
+    $.get("http://127.0.0.1:8000/", function(data, status){
+      //alert("Data: " + data + "\nStatus: " + status);
+	  test(data.toString());
+	  
+    });
+  });
+  
+  /*function test(data) {
+   //let myJson = Json.parse(data);
+	
+	var res = data.split("\r\n");
+	console.log(data + "\n");
+	console.log(res[0]);
+	
+	let i = 1;
+	
+	let headers = res[0].split(";");
+	res.splice(0, 1);
+	let data2 = [];
+	//alert(res[1].split(";") + " ** ");
+	//alert(res[1].split(";").length + " ** ");
+	let j = 0;
+	let k = 0;
+	
+	while (i < res.length) {
+	    let dat = res[i].split(";");
+		while (j < dat.length) {
+			data2[k] = dat[j];
+			k++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	
+	alert(data2[0+1]);	
+  }  
+  */
+});
+
+ function test(data, name, number) {
+   //let myJson = Json.parse(data);
+	
+	let foundName = false;
+	let foundNum = false;
+	let foundUser = false;
+	
+	var res = data.split("\r\n");
+	console.log(data + "\n");
+	console.log(res[0]);
+	
+	let i = 0;
+	
+	let headers = res[0].split(";");
+	res.splice(0, 1);
+	let data2 = [];
+	let j = 0;
+	let k = 0;
+	
+	while (i < res.length) {
+	    let dat = res[i].split(";");
+		while (j < dat.length) {
+			data2[k] = dat[j];
+			k++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	
+	//alert(data2[0+1]);
+	let y = 0;
+	let index = 0;
+	while (y < data2.length) {
+		if (data2[y].toUpperCase() == number) {
+			foundNum = true;
+			index = y;
+			break;
+		}
+		y++;
+	} 
+	if (foundNum && data2[index+1].toUpperCase() == name) {
+		foundName = true;
+	}
+	
+	if (foundNum && foundName) {
+		foundUser = true;
+	} else {
+		foundUser = false; 
+	}
+	
+	if (foundUser) {
+		
+	}
+	
+	return foundUser;
+  }
+
+function testFun() {
+	
+	var name = document.getElementById("username").value.trim();
+	var employeenumber = document.getElementById("employeenumber").value.trim();
+	
+	if (name.length <= 0 || employeenumber.length <= 0) {
+		alert("Fill in all details correctly!");
+	} else {
+		//alert("t " + name + "  " + employeenumber);
+		$.get("http://127.0.0.1:8000/", function(data, status){
+		  //alert("Data: " + data + "\nStatus: " + status);
+		  let authenticate = test(data.toString(), name.toUpperCase(), employeenumber.toUpperCase());	
+		  
+		  if (authenticate) {
+			alert("User successfully logged in");
+		  } else {
+			alert("User is not in the database");
+		  }
+		  
+		}); 
+	}	
+}
+  
+</script>
+</head>
+<body>
+
+<label for="username"> Username </label><br/>
+<input type = "text" id="username" name ="username" required="true"/><br/>
+<label for="employeenumber"> Employeenumber </label><br/>
+<input type = "text" name ="employeenumber" id="employeenumber" required="true"/><br/><br/>
+<input type = "button" name ="button" onclick = "testFun()" value="login" /><br/>
+
+</body>
+</html>
